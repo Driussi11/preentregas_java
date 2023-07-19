@@ -21,8 +21,19 @@ function correr(){
 
     let edad = prompt("Cuantos años tenes?")
     if (edad>=18)
-    alert("Sos mayor capo");
-    else(
-        alert("Sos menor")
-    )
+        alert("Sos mayor capo");
+    if(edad<=17)
+        alert("Sos menor");
+        
+    alert("Y, para la consigna, vos a hacer la tabla de edad por el numero que desees")
+    alert("La cantidad de veces que desees c:")
+
+    alert("Tienes " + edad)
+
+    const hasta = prompt("Cuanta cantidad de tablas?")
+
+    for(let i = 1; i <= hasta; i++) {
+        const resultado = i * edad;
+        alert(`${edad} * ${i} = ${resultado}`);}
+    
 }
