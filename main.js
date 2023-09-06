@@ -1,35 +1,26 @@
-let users = []
+function register() {
+    const regUsername = document.getElementById("regUsername").value;
+    const regPassword = document.getElementById("regPassword").value;
 
-if(localStorage.getItem("user")){
-    let usersArray = JSON.parse(localStorage.getItem("user")) || []
-    
-    console.log(typeof usersArray)
-}
-
-let form = document.getElementById("form")
-
-if(localStorage.getItem("username") && localStorage.getItem("password")){
-    document.getElementById("username").value = localStorage.getItem("username")
-    document.getElementById("password").value = localStorage.getItem("password")
-}
-
-
-
-form.addEventListener("submit", (e) =>{
-    e.preventDefault()
-    let username = document.getElementById("username").value
-    let password = document.getElementById("password").value
-
-    let user = {
-        username:username,
-        password:password,
+    if (localStorage.getItem(regUsername)) {
+        alert("El nombre ya esta en uso. Elige otro o intenta iniciar sesion");
+    } else {
+        localStorage.setItem(regUsername, regPassword);
+        alert("Registrado correctamente, procede a iniciar sesion");
+        
+        window.location.href = "login.html";
     }
-    // storage
+}
 
-    localStorage.setItem("user",JSON.stringify(user))
+function login() {
+    const loginUsername = document.getElementById("loginUsername").value;
+    const loginPassword = document.getElementById("loginPassword").value;
 
-    localStorage.setItem("username", username)
-    localStorage.setItem("password", password)
+    if (localStorage.getItem(loginUsername) === loginPassword) {
+        alert("Iniciaste sesion correctamente");
 
-    alert("Detalles guardados en los archivos")
-})
+        window.location.href = "final.html";
+    } else {
+        alert("Usuario o contraseña incorrecto");
+    }
+}
